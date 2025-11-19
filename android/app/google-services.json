@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "346271331846",
+    "project_id": "sticky-flutter-shop-aaeed",
+    "storage_bucket": "sticky-flutter-shop-aaeed.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346271331846:android:d4350429096fe04049f587",
+        "android_client_info": {
+          "package_name": "com.example.sticky_flutter_shop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCqrdph28kXmleuZaCXAQKnIb0H0NuDe5U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
