@@ -4,17 +4,18 @@ import 'package:go_router/go_router.dart';
 
 import '../widgets/drawer.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class RegisterPage extends StatefulWidget {
+  const RegisterPage({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   // field values
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
   // states
   bool _isLoading = false;
@@ -24,6 +25,7 @@ class _LoginPageState extends State<LoginPage> {
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -32,11 +34,27 @@ class _LoginPageState extends State<LoginPage> {
     context.go(route);
   }
 
-  // login function
-  Future<void> _logIn() async {
-    if (_emailController.text.trim().isEmpty || _passwordController.text.isEmpty) {
+  // register function
+  Future<void> _register() async {
+    if (_emailController.text.trim().isEmpty ||
+        _passwordController.text.isEmpty ||
+        _confirmPasswordController.text.isEmpty) {
       setState(() {
         _errorMessage = 'Veuillez remplir tous les champs';
+      });
+      return;
+    }
+
+    if (_passwordController.text != _confirmPasswordController.text) {
+      setState(() {
+        _errorMessage = 'Les mots de passe ne correspondent pas.';
+      });
+      return;
+    }
+
+    if (_passwordController.text.length < 6) {
+      setState(() {
+        _errorMessage = 'Le mot de passe doit contenir au moins 6 caractères.';
       });
       return;
     }
@@ -47,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
     });
 
     try {
-      await FirebaseAuth.instance.signInWithEmailAndPassword(
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
         email: _emailController.text.trim(),
         password: _passwordController.text,
       );
@@ -55,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Connexion réussie !'),
+            content: Text('Inscription réussie ! Vous êtes maintenant connecté.'),
             backgroundColor: Colors.green,
           ),
         );
@@ -78,16 +96,14 @@ class _LoginPageState extends State<LoginPage> {
 
   String _getErrorMessage(String errorCode) {
     switch (errorCode) {
-      case 'user-not-found':
-        return 'Aucun utilisateur trouvé avec cette adresse email.';
-      case 'wrong-password':
-        return 'Mot de passe incorrect.';
+      case 'email-already-in-use':
+        return 'Cette adresse email est déjà utilisée.';
+      case 'weak-password':
+        return 'Le mot de passe est trop faible.';
       case 'invalid-email':
         return 'Adresse email invalide.';
-      case 'user-disabled':
-        return 'Ce compte a été désactivé.';
-      case 'too-many-requests':
-        return 'Trop de tentatives. Réessayez plus tard.';
+      case 'operation-not-allowed':
+        return 'L\'inscription par email est désactivée.';
       default:
         return 'Une erreur est survenue. Veuillez réessayer.';
     }
@@ -98,7 +114,7 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text("Homepage")
+          title: const Text("Register new account")
       ),
       drawer: const NavBar(),
       body: Padding(
@@ -106,10 +122,13 @@ class _LoginPageState extends State<LoginPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(
-              Icons.account_circle,
-              size: 100,
-              color: Colors.blue[600],
+            SizedBox(
+              width: 100,
+              height: 100,
+              child: Image(
+                  image: NetworkImage("https://plus.unsplash.com/premium_photo-1683473596372-914f4368e1d0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
+                  fit: BoxFit.cover
+              ),
             ),
             const SizedBox(height: 30),
 
@@ -131,10 +150,23 @@ class _LoginPageState extends State<LoginPage> {
                 labelText: 'Mot de passe',
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.lock),
+                helperText: 'Au moins 6 caractères',
               ),
               obscureText: true,
               enabled: !_isLoading,
-              onSubmitted: (_) => _logIn(),
+            ),
+            const SizedBox(height: 16),
+
+            TextField(
+              controller: _confirmPasswordController,
+              decoration: const InputDecoration(
+                labelText: 'Confirmer le mot de passe',
+                border: OutlineInputBorder(),
+                prefixIcon: Icon(Icons.lock_outline),
+              ),
+              obscureText: true,
+              enabled: !_isLoading,
+              onSubmitted: (_) => _register(),
             ),
             const SizedBox(height: 24),
 
@@ -160,14 +192,14 @@ class _LoginPageState extends State<LoginPage> {
               width: double.infinity,
               height: 48,
               child: ElevatedButton(
-                onPressed: _isLoading ? null : _logIn,
+                onPressed: _isLoading ? null : _register,
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue[600],
+                  backgroundColor: Colors.green[600],
                   foregroundColor: Colors.white,
                 ),
                 child: _isLoading
                     ? const CircularProgressIndicator(color: Colors.white)
-                    : const Text('Se connecter', style: TextStyle(fontSize: 16)),
+                    : const Text('S\'inscrire', style: TextStyle(fontSize: 16)),
               ),
             ),
             const SizedBox(height: 16),
@@ -175,8 +207,8 @@ class _LoginPageState extends State<LoginPage> {
             TextButton(
               onPressed: _isLoading
                   ? null
-                  : () => _go(context, '/register'),
-              child: const Text('Pas de compte ? S\'inscrire'),
+                  : () => _go(context, '/login'),
+              child: const Text('Déjà un compte ? Se connecter'),
             ),
           ],
         ),

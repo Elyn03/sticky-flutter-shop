@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -5,12 +6,14 @@ class NavBar extends StatelessWidget {
   const NavBar({super.key});
 
   void _go(BuildContext context, String route) {
-    Navigator.pop(context); // close the drawer
-    context.go(route);      // navigate with go_router
+    Navigator.pop(context); 
+    context.go(route);
   }
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
+
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -40,11 +43,30 @@ class NavBar extends StatelessWidget {
             title: const Text('Orders'),
             onTap: () => _go(context, '/orders'),
           ),
-          ListTile(
-            leading: const Icon(Icons.login, color: Colors.green),
-            title: const Text('Login'),
-            onTap: () => _go(context, '/login'),
-          ),
+
+          if (user == null) ...[
+            ListTile(
+              leading: const Icon(Icons.login, color: Colors.green),
+              title: const Text('Login'),
+              onTap: () => _go(context, '/login'),
+            ),
+            ListTile(
+              leading: const Icon(Icons.person_add, color: Colors.green),
+              title: const Text('Register'),
+              onTap: () => _go(context, '/register'),
+            ),
+          ]
+          else ...[
+            ListTile(
+              leading: const Icon(Icons.logout, color: Colors.red),
+              title: const Text('Logout'),
+              onTap: () async {
+                await FirebaseAuth.instance.signOut();
+                _go(context, '/');
+              },
+            ),
+          ],
+
           ListTile(
             leading: const Icon(Icons.check, color: Colors.green),
             title: const Text('Checkout'),

@@ -1,10 +1,12 @@
 import 'package:go_router/go_router.dart';
+import 'package:sticky_flutter_shop/core/guard.dart';
 import 'package:sticky_flutter_shop/pages/cart_page.dart';
 import 'package:sticky_flutter_shop/pages/catalog_page.dart';
 import 'package:sticky_flutter_shop/pages/checkout_page.dart';
 import 'package:sticky_flutter_shop/pages/home_page.dart';
 import 'package:sticky_flutter_shop/pages/login_page.dart';
 import 'package:sticky_flutter_shop/pages/orders_page.dart';
+import 'package:sticky_flutter_shop/pages/register_page.dart';
 
 final GoRouter appRouter = GoRouter(
   routes: [
@@ -26,7 +28,11 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: '/login',
-      builder: (_, __) => const LoginPage(),
+      builder: (context, state) => const AuthGuard(child: LoginPage()),
+    ),
+    GoRoute(
+      path: '/register',
+      builder: (context, state) => const AuthGuard(child: RegisterPage()),
     ),
     GoRoute(
       path: '/checkout',
