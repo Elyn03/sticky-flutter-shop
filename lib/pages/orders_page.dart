@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sticky_flutter_shop/widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 
 class OrdersPage extends StatefulWidget {
@@ -12,10 +13,7 @@ class _OrdersPageState extends State<OrdersPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text("Orders")
-      ),
+      appBar: CustomAppBar(title: 'Orders Page'),
       drawer: const NavBar(),
       body: const Center(child: Text('Orders')),
     );

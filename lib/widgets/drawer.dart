@@ -6,7 +6,7 @@ class NavBar extends StatelessWidget {
   const NavBar({super.key});
 
   void _go(BuildContext context, String route) {
-    Navigator.pop(context); 
+    Navigator.pop(context);
     context.go(route);
   }
 
@@ -15,65 +15,56 @@ class NavBar extends StatelessWidget {
     final user = FirebaseAuth.instance.currentUser;
 
     return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
+      child: Column(
         children: [
-          const DrawerHeader(
-            decoration: BoxDecoration(color: Colors.lightGreen),
-            child: Text("Menu"),
+          SizedBox(
+            height: 70,
+            child: Container(
+              color: Colors.transparent,
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: IconButton(
+                  icon: const Icon(Icons.close, color: Colors.blueGrey),
+                  onPressed: () => Navigator.pop(context),
+                ),
+              ),
+            ),
           ),
 
-          ListTile(
-            leading: const Icon(Icons.home, color: Colors.orange),
-            title: const Text('Home'),
-            onTap: () => _go(context, '/'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.shopping_bag, color: Colors.orange),
-            title: const Text('Catalog'),
-            onTap: () => _go(context, '/catalog'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.add_shopping_cart, color: Colors.green),
-            title: const Text('Cart'),
-            onTap: () => _go(context, '/cart'),
-          ),
-          ListTile(
-            leading: const Icon(Icons.shopping_bag, color: Colors.blue),
-            title: const Text('Orders'),
-            onTap: () => _go(context, '/orders'),
-          ),
+          const Divider(height: 24, thickness: 1),
+
+          _navItem("Home", () => _go(context, '/')),
+          _navItem("Catalog", () => _go(context, '/catalog')),
+          _navItem("Cart", () => _go(context, '/cart')),
+          _navItem("Orders", () => _go(context, '/orders')),
+          _navItem("Checkout", () => _go(context, '/checkout')),
+
+          const Spacer(),
+          const Divider(height: 24, thickness: 1),
 
           if (user == null) ...[
-            ListTile(
-              leading: const Icon(Icons.login, color: Colors.green),
-              title: const Text('Login'),
-              onTap: () => _go(context, '/login'),
-            ),
-            ListTile(
-              leading: const Icon(Icons.person_add, color: Colors.green),
-              title: const Text('Register'),
-              onTap: () => _go(context, '/register'),
-            ),
-          ]
-          else ...[
-            ListTile(
-              leading: const Icon(Icons.logout, color: Colors.red),
-              title: const Text('Logout'),
-              onTap: () async {
-                await FirebaseAuth.instance.signOut();
-                _go(context, '/');
-              },
-            ),
+            _navItem("Login", () => _go(context, '/login')),
+            _navItem("Register", () => _go(context, '/register')),
+          ] else ...[
+            _navItem("Logout", () async {
+              await FirebaseAuth.instance.signOut();
+              _go(context, '/');
+            }),
           ],
-
-          ListTile(
-            leading: const Icon(Icons.check, color: Colors.green),
-            title: const Text('Checkout'),
-            onTap: () => _go(context, '/checkout'),
-          ),
         ],
       ),
+    );
+  }
+
+  Widget _navItem(String label, VoidCallback onTap) {
+    return ListTile(
+      title: Text(
+        label,
+        style: const TextStyle(fontSize: 16),
+      ),
+      onTap: onTap,
+      dense: true,
+      visualDensity: const VisualDensity(vertical: -1),
     );
   }
 }

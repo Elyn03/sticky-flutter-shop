@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:sticky_flutter_shop/widgets/app_bar.dart';
 import '../widgets/drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -16,10 +17,7 @@ class _HomePageState extends State<HomePage> {
     final user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text("Homepage")
-      ),
+      appBar: CustomAppBar(title: 'Home Page'),
       drawer: const NavBar(),
       body: Consumer(builder: (context, viewmodel, child) {
         return Center(

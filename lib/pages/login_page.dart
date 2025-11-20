@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
+import 'package:sticky_flutter_shop/widgets/app_bar.dart';
 
 import '../widgets/drawer.dart';
 
@@ -91,10 +92,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text("Homepage")
-      ),
+      appBar: CustomAppBar(title: 'Login Page'),
       drawer: const NavBar(),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

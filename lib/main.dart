@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sticky_flutter_shop/core/router.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sticky_flutter_shop/theme/app_theme.dart';
 import 'package:sticky_flutter_shop/viewModels/products_view_model.dart';
 import 'firebase_options.dart';
 
@@ -25,9 +26,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         title: 'Flutter Shop',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        ),
+        theme: AppTheme.lightTheme,
         routerConfig: appRouter,
       )
     );

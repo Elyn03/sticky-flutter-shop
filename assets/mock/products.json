@@ -1,145 +1,205 @@
 [
   {
     "id": 1,
-    "title": "Sticker Chat",
+    "title": "Sticker Pixel Cat - Burn All",
     "price": 3.50,
-    "thumbnail": "assets/images/stickers/cat.png",
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1757350903048-43eb9a861e83",
     "images": [
-      "assets/images/stickers/cat.png"
+      "https://plus.unsplash.com/premium_vector-1757350903048-43eb9a861e83"
     ],
-    "description": "Un petit chat mignon",
-    "category": "animals"
+    "description": "Sticker pixel art d’un petit chat expressif façon fenêtre rétro.",
+    "category": "pixel-art"
   },
+
   {
     "id": 2,
     "title": "Sticker Lune Aquarelle",
     "price": 3.49,
-    "thumbnail": "https://i.imgur.com/XhXH0Yc.png",
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752857065806-6764ba6b593f",
     "images": [
-      "https://i.imgur.com/XhXH0Yc.png",
-      "https://i.imgur.com/VO7wj9P.png"
+      "https://plus.unsplash.com/premium_vector-1752857065806-6764ba6b593f"
     ],
-    "description": "Une lune en style aquarelle, imprimée sur un vinyle premium résistant à l'eau.",
-    "category": "nature"
+    "description": "Sticker artistique représentant une lune peinte en aquarelle dans un style doux.",
+    "category": "aquarelle"
   },
+
   {
     "id": 3,
-    "title": "Sticker Gamer Level Up",
+    "title": "Sticker Fenêtre d'Erreur",
     "price": 2.50,
-    "thumbnail": "https://i.imgur.com/7sqWe1q.png",
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1757350902981-14debbd9e548",
     "images": [
-      "https://i.imgur.com/7sqWe1q.png",
-      "https://i.imgur.com/c8kdf5y.png"
+      "https://plus.unsplash.com/premium_vector-1757350902981-14debbd9e548"
     ],
-    "description": "Un sticker parfait pour les gamers : design rétro avec message 'Level Up'.",
-    "category": "geek"
+    "description": "Sticker pixel art inspiré des fenêtres d’erreur rétro.",
+    "category": "pixel-art"
   },
+
   {
     "id": 4,
     "title": "Sticker Renard Minimaliste",
     "price": 3.10,
-    "thumbnail": "https://i.imgur.com/8pvkqad.png",
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752676271025-8588cc965df7",
     "images": [
-      "https://i.imgur.com/8pvkqad.png",
-      "https://i.imgur.com/nFGxR3I.png"
+      "https://plus.unsplash.com/premium_vector-1752676271025-8588cc965df7"
     ],
-    "description": "Sticker premium représentant un renard minimaliste dans des tons chauds.",
-    "category": "animaux"
+    "description": "Sticker d'un renard dessiné en style minimaliste moderne.",
+    "category": "art-minimaliste"
   },
+
   {
     "id": 5,
-    "title": "Sticker Fleurs de Cerisier",
+    "title": "Sticker Pixel It's OK",
     "price": 3.99,
-    "thumbnail": "https://i.imgur.com/6XeApnz.png",
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1757350902987-034dea10a8f4",
     "images": [
-      "https://i.imgur.com/6XeApnz.png",
-      "https://i.imgur.com/LUuLKVd.png"
+      "https://plus.unsplash.com/premium_vector-1757350902987-034dea10a8f4"
     ],
-    "description": "Magnifique sticker inspiré des sakura japonais, parfait pour notes, laptop ou bouteilles.",
-    "category": "nature"
+    "description": "Fenêtre pixel art positive affichant le message “It’s OK”.",
+    "category": "pixel-art"
   },
+
   {
     "id": 6,
     "title": "Sticker Robot Kawaii",
     "price": 2.89,
-    "thumbnail": "https://i.imgur.com/RkkO7C1.png",
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752676271045-fe30f98839d9",
     "images": [
-      "https://i.imgur.com/RkkO7C1.png",
-      "https://i.imgur.com/C3H1KfG.png"
+      "https://plus.unsplash.com/premium_vector-1752676271045-fe30f98839d9"
     ],
-    "description": "Petit robot kawaii plein de charme, impression HD sur vinyle anti-rayures.",
+    "description": "Petit robot adorable dans un style kawaii lumineux.",
     "category": "kawaii"
   },
+
   {
     "id": 7,
-    "title": "Sticker Astronaute dans l'Espace",
+    "title": "Sticker Pixel Bug",
     "price": 4.20,
-    "thumbnail": "https://i.imgur.com/wUw3yFG.png",
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1757350903208-a47bfc01a6ad",
     "images": [
-      "https://i.imgur.com/wUw3yFG.png",
-      "https://i.imgur.com/J4b1EHL.png"
+      "https://plus.unsplash.com/premium_vector-1757350903208-a47bfc01a6ad"
     ],
-    "description": "Sticker détaillé d’un astronaute flottant dans l’espace — idéal pour les fans d’astronomie.",
-    "category": "geek"
+    "description": "Sticker d’icône de bug façon ancienne interface pixelisée.",
+    "category": "pixel-art"
   },
+
   {
     "id": 8,
     "title": "Sticker Panda Relax",
     "price": 2.70,
-    "thumbnail": "https://i.imgur.com/JhcBWWs.png",
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752857065759-904011e3eee5",
     "images": [
-      "https://i.imgur.com/JhcBWWs.png",
-      "https://i.imgur.com/9QBiAts.png"
+      "https://plus.unsplash.com/premium_vector-1752857065759-904011e3eee5"
     ],
-    "description": "Un adorable panda qui se repose. Parfait pour un look chill et mignon.",
-    "category": "animaux"
-  },
-  {
-    "id": 9,
-    "title": "Sticker Montagne Vectorielle",
-    "price": 3.25,
-    "thumbnail": "https://i.imgur.com/Mj9gbzO.png",
-    "images": [
-      "https://i.imgur.com/Mj9gbzO.png",
-      "https://i.imgur.com/33U9Yqg.png"
-    ],
-    "description": "Sticker de montagnes stylisées en style vectoriel. Résistant aux UV et à l'eau.",
-    "category": "nature"
-  },
-  {
-    "id": 10,
-    "title": "Sticker Sushi Kawaii",
-    "price": 2.99,
-    "thumbnail": "https://i.imgur.com/ut3AY0s.png",
-    "images": [
-      "https://i.imgur.com/ut3AY0s.png",
-      "https://i.imgur.com/1Sb9UFv.png"
-    ],
-    "description": "Sushi trop mignon, parfait pour gourmands et fans de kawaii.",
+    "description": "Panda mignon dans un style kawaii doux et pastel.",
     "category": "kawaii"
   },
+
+  {
+    "id": 9,
+    "title": "Sticker Pixel New Mail",
+    "price": 3.25,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1757350902944-ccccb2be9c83",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1757350902944-ccccb2be9c83"
+    ],
+    "description": "Icône pixel art représentant un nouveau message.",
+    "category": "pixel-art"
+  },
+
+  {
+    "id": 10,
+    "title": "Sticker Câble Kawaii",
+    "price": 2.99,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752581352781-32eb86695a5f",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1752581352781-32eb86695a5f"
+    ],
+    "description": "Sticker d’un câble au design kawaii amusant.",
+    "category": "kawaii"
+  },
+
   {
     "id": 11,
-    "title": "Sticker Dragon Chinois",
+    "title": "Sticker Boîte de Conserve Stylisée",
     "price": 4.90,
-    "thumbnail": "https://i.imgur.com/6XcDbTt.png",
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752678172074-d45bfc5c1cdb",
     "images": [
-      "https://i.imgur.com/6XcDbTt.png",
-      "https://i.imgur.com/uohQJHh.png"
+      "https://plus.unsplash.com/premium_vector-1752678172074-d45bfc5c1cdb"
     ],
-    "description": "Sticker détaillé inspiré de l'art traditionnel chinois. Impression vinyle premium.",
+    "description": "Sticker inspiré du design asiatique traditionnel, style conserve illustrée.",
     "category": "art"
   },
+
   {
     "id": 12,
     "title": "Sticker Arc-en-Ciel Pastel",
     "price": 2.20,
-    "thumbnail": "https://i.imgur.com/5wTGG4E.png",
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752767721509-97d192b8f4e3",
     "images": [
-      "https://i.imgur.com/5wTGG4E.png",
-      "https://i.imgur.com/vVk1eQb.png"
+      "https://plus.unsplash.com/premium_vector-1752767721509-97d192b8f4e3"
     ],
-    "description": "Petit arc-en-ciel aux couleurs pastel, idéal pour une touche positive.",
+    "description": "Arc-en-ciel aux couleurs pastel, style mignon et doux.",
+    "category": "kawaii"
+  },
+
+  {
+    "id": 13,
+    "title": "Sticker Canette Manga",
+    "price": 2.20,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752082969132-9482a1bae48e",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1752082969132-9482a1bae48e"
+    ],
+    "description": "Canette stylisée façon illustration manga.",
+    "category": "kawaii"
+  },
+
+  {
+    "id": 14,
+    "title": "Sticker Clé Minimaliste",
+    "price": 2.20,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752129760579-f68773adf23b",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1752129760579-f68773adf23b"
+    ],
+    "description": "Clé stylisée en illustration simple et décorative.",
+    "category": "objects"
+  },
+
+  {
+    "id": 15,
+    "title": "Sticker Chat Café Kawaii",
+    "price": 2.20,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1742136798366-f49ae7d7b3dc",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1742136798366-f49ae7d7b3dc"
+    ],
+    "description": "Sticker de tasses de café avec petits chats adorables.",
+    "category": "kawaii"
+  },
+
+  {
+    "id": 16,
+    "title": "Sticker Bubble Tea Animals",
+    "price": 2.20,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1742194673680-e7db2f2fd4d8",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1742194673680-e7db2f2fd4d8"
+    ],
+    "description": "Trois bubble tea avec animaux mignons dans un style kawaii.",
+    "category": "kawaii"
+  },
+
+  {
+    "id": 17,
+    "title": "Sticker Cupcake Animal",
+    "price": 2.20,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1742459790961-e4a3546201d3",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1742459790961-e4a3546201d3"
+    ],
+    "description": "Cupcake trop mignon avec tête d’animal illustrée.",
     "category": "kawaii"
   }
 ]
