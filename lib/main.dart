@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sticky_flutter_shop/core/router.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:sticky_flutter_shop/services/api_cart.dart';
 import 'package:sticky_flutter_shop/theme/app_theme.dart';
 import 'package:sticky_flutter_shop/viewModels/products_view_model.dart';
 import 'firebase_options.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => ProductsViewModel()),
+        ChangeNotifierProvider(create: (_) => CartProvider())
       ],
       child: MaterialApp.router(
         title: 'Sticky Flutter Shop',

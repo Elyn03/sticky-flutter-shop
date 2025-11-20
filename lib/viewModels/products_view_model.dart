@@ -1,5 +1,5 @@
 import 'package:flutter/foundation.dart';
-import 'package:sticky_flutter_shop/models/products.dart';
+import 'package:sticky_flutter_shop/models/product.dart';
 import 'package:sticky_flutter_shop/services/api_mock.dart';
 
 class ProductsViewModel extends ChangeNotifier {

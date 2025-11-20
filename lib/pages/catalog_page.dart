@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sticky_flutter_shop/models/products.dart';
+import 'package:sticky_flutter_shop/models/product.dart';
 import 'package:sticky_flutter_shop/viewModels/products_view_model.dart';
 import 'package:sticky_flutter_shop/widgets/app_bar.dart';
 import '../widgets/drawer.dart';

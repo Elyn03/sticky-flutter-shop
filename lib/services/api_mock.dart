@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
-import 'package:sticky_flutter_shop/models/products.dart';
+import 'package:sticky_flutter_shop/models/product.dart';
 
 class ApiMock {
   static Future<List<Product>> fetchProducts() async {
