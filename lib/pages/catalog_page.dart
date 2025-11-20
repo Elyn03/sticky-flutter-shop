@@ -13,7 +13,18 @@ class CatalogPage extends StatefulWidget {
   @override
   State<CatalogPage> createState() => _CatalogPageState();
 }
+
 class _CatalogPageState extends State<CatalogPage> {
+  final _queryController = TextEditingController();
+  String searchQuery = "";
+  String dropdownValue = "All";
+
+  @override
+  void dispose() {
+    _queryController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,38 +40,103 @@ class _CatalogPageState extends State<CatalogPage> {
           }
 
           if (viewModel.hasError) {
-            return Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Icon(Icons.error, size: 64, color: Colors.red),
-                  const SizedBox(height: 16),
-                  Text(viewModel.errorMessage),
-                  const SizedBox(height: 16),
-                  ElevatedButton(
-                    onPressed: () => viewModel.loadProducts(),
-                    child: const Text('Réessayer'),
-                  ),
-                ],
-              ),
-            );
+            return _buildError(viewModel);
           }
 
-          return GridView.builder(
-            padding: const EdgeInsets.all(16),
-            itemCount: viewModel.products.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: kIsWeb ? 5 : 2,
-              childAspectRatio: kIsWeb ? 0.75 : 0.6,
-              crossAxisSpacing: 16,
-              mainAxisSpacing: 16,
-            ),
-            itemBuilder: (context, index) {
-              final product = viewModel.products[index];
-              return _productCard(product);
-            },
+          // generate category list
+          final categories = viewModel.products
+              .map((product) => product.category)
+              .toSet()
+              .toList()
+            ..sort();
+          if (!categories.contains("All")) categories.insert(0, "All");
+
+          // filter products
+          final filteredProducts = viewModel.products.where((product) {
+            final matchesSearch = product.title.toLowerCase().contains(searchQuery.toLowerCase());
+            final matchesCategory = dropdownValue == "All" || product.category == dropdownValue;
+            return matchesSearch && matchesCategory;
+          }).toList();
+
+          return Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Row(
+                  children: [
+                    Text('${filteredProducts.length} produits'),
+                    const SizedBox(width: 12),
+                    Expanded(
+                      child: TextField(
+                        controller: _queryController,
+                        decoration: const InputDecoration(
+                          labelText: 'Recherche',
+                          border: OutlineInputBorder(),
+                          prefixIcon: Icon(Icons.search),
+                        ),
+                        onChanged: (value) {
+                          setState(() => searchQuery = value);
+                        },
+                      ),
+                    ),
+                    const SizedBox(width: 12),
+                    DropdownButton<String>(
+                      value: dropdownValue,
+                      icon: const Icon(Icons.arrow_drop_down_rounded),
+                      onChanged: (String? value) {
+                        if (value != null) {
+                          setState(() {
+                            dropdownValue = value;
+                          });
+                        }
+                      },
+                      items: categories.map((String value) {
+                        return DropdownMenuItem<String>(
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                    ),
+                  ],
+                ),
+              ),
+              Expanded(
+                child: GridView.builder(
+                  padding: const EdgeInsets.all(16),
+                  itemCount: filteredProducts.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: kIsWeb ? 5 : 2,
+                    childAspectRatio: kIsWeb ? 0.75 : 0.6,
+                    crossAxisSpacing: 16,
+                    mainAxisSpacing: 16,
+                  ),
+                  itemBuilder: (context, index) {
+                    final product = filteredProducts[index];
+                    return _productCard(product);
+                  },
+                ),
+              ),
+            ],
           );
         },
+      ),
+    );
+  }
+
+  Widget _buildError(ProductsViewModel viewModel) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Icon(Icons.error, size: 64, color: Colors.red),
+          const SizedBox(height: 16),
+          Text(viewModel.errorMessage),
+          const SizedBox(height: 16),
+          ElevatedButton(
+            onPressed: () => viewModel.loadProducts(),
+            child: const Text('Réessayer'),
+          ),
+        ],
       ),
     );
   }
@@ -105,12 +181,12 @@ class _CatalogPageState extends State<CatalogPage> {
               // price
               Text(
                 product.formattedPrice,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.blue.shade700,
+                  style: TextStyle(
+                    fontSize: 15,
+                    color: Colors.blue.shade700,
                   fontWeight: FontWeight.bold,
+                  ),
                 ),
-              ),
             ],
           ),
         ),

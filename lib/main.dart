@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => ProductsViewModel()),
       ],
       child: MaterialApp.router(
-        title: 'Flutter Shop',
+        title: 'Sticky Flutter Shop',
         theme: AppTheme.lightTheme,
         routerConfig: appRouter,
       )
