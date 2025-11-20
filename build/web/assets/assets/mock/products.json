@@ -1,0 +1,205 @@
+[
+  {
+    "id": 1,
+    "title": "Sticker Burn It All",
+    "price": 3.50,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1757350903048-43eb9a861e83",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1757350903048-43eb9a861e83"
+    ],
+    "description": "Sticker pixel art d'une poubelle en feu",
+    "category": "Pixel Art"
+  },
+
+  {
+    "id": 2,
+    "title": "Sticker Bakery p1",
+    "price": 3.49,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752857065806-6764ba6b593f",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1752857065806-6764ba6b593f"
+    ],
+    "description": "Planche de stcickers : théière, micro-ondes, fouet, 2 pancartes, rouleau",
+    "category": "Bakery"
+  },
+
+  {
+    "id": 3,
+    "title": "Sticker Fenêtre d'Erreur",
+    "price": 2.50,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1757350902981-14debbd9e548",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1757350902981-14debbd9e548"
+    ],
+    "description": "Sticker pixel art inspiré des fenêtres d’erreur rétro",
+    "category": "Pixel Art"
+  },
+
+  {
+    "id": 4,
+    "title": "Sticker Bakery p2",
+    "price": 3.10,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752676271025-8588cc965df7",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1752676271025-8588cc965df7"
+    ],
+    "description": "Planche de stcickers : bao, sushi, tempura, takoyaki, gyoza, taiyaki",
+    "category": "Bakery"
+  },
+
+  {
+    "id": 5,
+    "title": "Sticker It's OK",
+    "price": 3.99,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1757350902987-034dea10a8f4",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1757350902987-034dea10a8f4"
+    ],
+    "description": "Fenêtre pixel art positive affichant le message “It’s OK”",
+    "category": "Pixel Art"
+  },
+
+  {
+    "id": 6,
+    "title": "Sticker Bakery p3",
+    "price": 2.89,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752676271045-fe30f98839d9",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1752676271045-fe30f98839d9"
+    ],
+    "description": "Planche de stcickers : 4 pains différents, croissant, muffin",
+    "category": "Bakery"
+  },
+
+  {
+    "id": 7,
+    "title": "Sticker Pixel Bug",
+    "price": 4.20,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1757350903208-a47bfc01a6ad",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1757350903208-a47bfc01a6ad"
+    ],
+    "description": "Sticker d’icône de bug façon ancienne interface pixelisée",
+    "category": "Pixel Art"
+  },
+
+  {
+    "id": 8,
+    "title": "Sticker Bakery p4",
+    "price": 2.70,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752857065759-904011e3eee5",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1752857065759-904011e3eee5"
+    ],
+    "description": "Planche de stcickers : 2 boissons, 3 glaces, yaourt",
+    "category": "Bakery"
+  },
+
+  {
+    "id": 9,
+    "title": "Sticker Pixel New Mail",
+    "price": 3.25,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1757350902944-ccccb2be9c83",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1757350902944-ccccb2be9c83"
+    ],
+    "description": "Icône pixel art représentant un nouveau message",
+    "category": "Pixel Art"
+  },
+
+  {
+    "id": 10,
+    "title": "Sticker Câble",
+    "price": 2.99,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752581352781-32eb86695a5f",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1752581352781-32eb86695a5f"
+    ],
+    "description": "Sticker d’un câble",
+    "category": "Object"
+  },
+
+  {
+    "id": 11,
+    "title": "Sticker Boîte de Conserve Stylisée",
+    "price": 4.90,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752678172074-d45bfc5c1cdb",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1752678172074-d45bfc5c1cdb"
+    ],
+    "description": "Sticker inspiré du design asiatique traditionnel, style conserve illustrée",
+    "category": "Object"
+  },
+
+  {
+    "id": 12,
+    "title": "Sticker Bakery p5",
+    "price": 2.20,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752767721509-97d192b8f4e3",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1752767721509-97d192b8f4e3"
+    ],
+    "description": "Planche de stcickers : donut, cupcake, tarte, pudding, bretzel, roulé",
+    "category": "Bakery"
+  },
+
+  {
+    "id": 13,
+    "title": "Sticker Canette",
+    "price": 2.20,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752082969132-9482a1bae48e",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1752082969132-9482a1bae48e"
+    ],
+    "description": "Canette façon illustration manga",
+    "category": "Object"
+  },
+
+  {
+    "id": 14,
+    "title": "Sticker Clé Minimaliste",
+    "price": 2.20,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1752129760579-f68773adf23b",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1752129760579-f68773adf23b"
+    ],
+    "description": "Clé stylisée en illustration simple et décorative",
+    "category": "Object"
+  },
+
+  {
+    "id": 15,
+    "title": "Sticker Chat Café Kawaii",
+    "price": 2.20,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1742136798366-f49ae7d7b3dc",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1742136798366-f49ae7d7b3dc"
+    ],
+    "description": "Sticker de tasses de café avec petits chats adorables",
+    "category": "Kawaii"
+  },
+
+  {
+    "id": 16,
+    "title": "Sticker Bubble Tea Animals",
+    "price": 2.20,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1742194673680-e7db2f2fd4d8",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1742194673680-e7db2f2fd4d8"
+    ],
+    "description": "Trois bubble tea avec animaux mignons dans un style kawaii",
+    "category": "Kawaii"
+  },
+
+  {
+    "id": 17,
+    "title": "Sticker Cupcake Animal",
+    "price": 2.20,
+    "thumbnail": "https://plus.unsplash.com/premium_vector-1742459790961-e4a3546201d3",
+    "images": [
+      "https://plus.unsplash.com/premium_vector-1742459790961-e4a3546201d3"
+    ],
+    "description": "Cupcake trop mignon avec tête d’animal illustrée",
+    "category": "Kawaii"
+  }
+]
