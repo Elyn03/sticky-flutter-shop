@@ -34,6 +34,23 @@ class ProductPage extends StatelessWidget {
 
         final product = snapshot.data!;
 
+        if (!kIsWeb && Platform.isIOS) {
+          return CupertinoPageScaffold(
+            navigationBar: CupertinoNavigationBar(
+              middle: Text(product.title),
+              previousPageTitle: "Retour",
+            ),
+            child: Material(
+              child: SafeArea(
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.all(16),
+                  child: _content(context, product),
+                ),
+              ),
+            ),
+          );
+        }
+
         return Scaffold(
             appBar: CustomAppBar(title: product.title, backButtonLink: "/catalog"),
             body: _content(context, product)

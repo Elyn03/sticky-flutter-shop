@@ -1,6 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
+import 'package:flutter/services.dart';
+import 'dart:io' show Platform;
+import 'package:share_plus/share_plus.dart';
 
 class NavBar extends StatelessWidget {
   const NavBar({super.key});
@@ -50,6 +54,29 @@ class NavBar extends StatelessWidget {
               await FirebaseAuth.instance.signOut();
               _go(context, '/');
             }),
+          ],
+
+          if (kIsWeb) ...[
+            const Divider(height: 24, thickness: 1),
+            ElevatedButton(
+              onPressed: () {
+                Clipboard.setData(const ClipboardData(text: "https://sticky-flutter-shop.vercel.app/"));
+                ScaffoldMessenger.of(context)
+                    .showSnackBar(const SnackBar(content: Text("Lien copié !")));
+              },
+              child: const Text("Partager le site"),
+            ),
+            const SizedBox(height: 16)
+          ],
+
+          if (!kIsWeb && Platform.isAndroid) ...[
+            ElevatedButton(
+              onPressed: () {
+                Share.share("Check out this shop: https://sticky-flutter-shop.vercel.app/");
+              },
+              child: const Text("Partager l'app"),
+            ),
+            const SizedBox(height: 16)
           ],
         ],
       ),
