@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../widgets/drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -20,7 +21,21 @@ class _HomePageState extends State<HomePage> {
           title: const Text("Homepage")
       ),
       drawer: const NavBar(),
-      body: const Center(child: Text('Welcome to Flutter Drawer Demo')),
+      body: Consumer(builder: (context, viewmodel, child) {
+        return Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                user != null
+                    ? 'Welcome, ${user.email}!'
+                    : 'Welcome, Guest! Please log in.',
+                style: const TextStyle(fontSize: 20),
+              ),
+            ],
+          ),
+        );
+      }),
     );
   }
 }

@@ -27,11 +27,6 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  void _go(BuildContext context, String route) {
-    Navigator.pop(context);
-    context.go(route);
-  }
-
   // login function
   Future<void> _logIn() async {
     if (_emailController.text.trim().isEmpty || _passwordController.text.isEmpty) {
@@ -59,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
             backgroundColor: Colors.green,
           ),
         );
-        _go(context, '/');
+        context.go('/');
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -175,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
             TextButton(
               onPressed: _isLoading
                   ? null
-                  : () => _go(context, '/register'),
+                  : () => context.go('/register'),
               child: const Text('Pas de compte ? S\'inscrire'),
             ),
           ],

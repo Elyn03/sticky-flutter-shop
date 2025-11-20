@@ -1,0 +1,145 @@
+[
+  {
+    "id": 1,
+    "title": "Sticker Chat",
+    "price": 3.50,
+    "thumbnail": "assets/images/stickers/cat.png",
+    "images": [
+      "assets/images/stickers/cat.png"
+    ],
+    "description": "Un petit chat mignon",
+    "category": "animals"
+  },
+  {
+    "id": 2,
+    "title": "Sticker Lune Aquarelle",
+    "price": 3.49,
+    "thumbnail": "https://i.imgur.com/XhXH0Yc.png",
+    "images": [
+      "https://i.imgur.com/XhXH0Yc.png",
+      "https://i.imgur.com/VO7wj9P.png"
+    ],
+    "description": "Une lune en style aquarelle, imprimée sur un vinyle premium résistant à l'eau.",
+    "category": "nature"
+  },
+  {
+    "id": 3,
+    "title": "Sticker Gamer Level Up",
+    "price": 2.50,
+    "thumbnail": "https://i.imgur.com/7sqWe1q.png",
+    "images": [
+      "https://i.imgur.com/7sqWe1q.png",
+      "https://i.imgur.com/c8kdf5y.png"
+    ],
+    "description": "Un sticker parfait pour les gamers : design rétro avec message 'Level Up'.",
+    "category": "geek"
+  },
+  {
+    "id": 4,
+    "title": "Sticker Renard Minimaliste",
+    "price": 3.10,
+    "thumbnail": "https://i.imgur.com/8pvkqad.png",
+    "images": [
+      "https://i.imgur.com/8pvkqad.png",
+      "https://i.imgur.com/nFGxR3I.png"
+    ],
+    "description": "Sticker premium représentant un renard minimaliste dans des tons chauds.",
+    "category": "animaux"
+  },
+  {
+    "id": 5,
+    "title": "Sticker Fleurs de Cerisier",
+    "price": 3.99,
+    "thumbnail": "https://i.imgur.com/6XeApnz.png",
+    "images": [
+      "https://i.imgur.com/6XeApnz.png",
+      "https://i.imgur.com/LUuLKVd.png"
+    ],
+    "description": "Magnifique sticker inspiré des sakura japonais, parfait pour notes, laptop ou bouteilles.",
+    "category": "nature"
+  },
+  {
+    "id": 6,
+    "title": "Sticker Robot Kawaii",
+    "price": 2.89,
+    "thumbnail": "https://i.imgur.com/RkkO7C1.png",
+    "images": [
+      "https://i.imgur.com/RkkO7C1.png",
+      "https://i.imgur.com/C3H1KfG.png"
+    ],
+    "description": "Petit robot kawaii plein de charme, impression HD sur vinyle anti-rayures.",
+    "category": "kawaii"
+  },
+  {
+    "id": 7,
+    "title": "Sticker Astronaute dans l'Espace",
+    "price": 4.20,
+    "thumbnail": "https://i.imgur.com/wUw3yFG.png",
+    "images": [
+      "https://i.imgur.com/wUw3yFG.png",
+      "https://i.imgur.com/J4b1EHL.png"
+    ],
+    "description": "Sticker détaillé d’un astronaute flottant dans l’espace — idéal pour les fans d’astronomie.",
+    "category": "geek"
+  },
+  {
+    "id": 8,
+    "title": "Sticker Panda Relax",
+    "price": 2.70,
+    "thumbnail": "https://i.imgur.com/JhcBWWs.png",
+    "images": [
+      "https://i.imgur.com/JhcBWWs.png",
+      "https://i.imgur.com/9QBiAts.png"
+    ],
+    "description": "Un adorable panda qui se repose. Parfait pour un look chill et mignon.",
+    "category": "animaux"
+  },
+  {
+    "id": 9,
+    "title": "Sticker Montagne Vectorielle",
+    "price": 3.25,
+    "thumbnail": "https://i.imgur.com/Mj9gbzO.png",
+    "images": [
+      "https://i.imgur.com/Mj9gbzO.png",
+      "https://i.imgur.com/33U9Yqg.png"
+    ],
+    "description": "Sticker de montagnes stylisées en style vectoriel. Résistant aux UV et à l'eau.",
+    "category": "nature"
+  },
+  {
+    "id": 10,
+    "title": "Sticker Sushi Kawaii",
+    "price": 2.99,
+    "thumbnail": "https://i.imgur.com/ut3AY0s.png",
+    "images": [
+      "https://i.imgur.com/ut3AY0s.png",
+      "https://i.imgur.com/1Sb9UFv.png"
+    ],
+    "description": "Sushi trop mignon, parfait pour gourmands et fans de kawaii.",
+    "category": "kawaii"
+  },
+  {
+    "id": 11,
+    "title": "Sticker Dragon Chinois",
+    "price": 4.90,
+    "thumbnail": "https://i.imgur.com/6XcDbTt.png",
+    "images": [
+      "https://i.imgur.com/6XcDbTt.png",
+      "https://i.imgur.com/uohQJHh.png"
+    ],
+    "description": "Sticker détaillé inspiré de l'art traditionnel chinois. Impression vinyle premium.",
+    "category": "art"
+  },
+  {
+    "id": 12,
+    "title": "Sticker Arc-en-Ciel Pastel",
+    "price": 2.20,
+    "thumbnail": "https://i.imgur.com/5wTGG4E.png",
+    "images": [
+      "https://i.imgur.com/5wTGG4E.png",
+      "https://i.imgur.com/vVk1eQb.png"
+    ],
+    "description": "Petit arc-en-ciel aux couleurs pastel, idéal pour une touche positive.",
+    "category": "kawaii"
+  }
+]

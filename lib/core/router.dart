@@ -6,25 +6,33 @@ import 'package:sticky_flutter_shop/pages/checkout_page.dart';
 import 'package:sticky_flutter_shop/pages/home_page.dart';
 import 'package:sticky_flutter_shop/pages/login_page.dart';
 import 'package:sticky_flutter_shop/pages/orders_page.dart';
+import 'package:sticky_flutter_shop/pages/product_page.dart';
 import 'package:sticky_flutter_shop/pages/register_page.dart';
 
 final GoRouter appRouter = GoRouter(
   routes: [
     GoRoute(
       path: '/',
-      builder: (_, __) => const HomePage(),
+      builder: (context, state) => const HomePage(),
     ),
     GoRoute(
       path: '/catalog',
-      builder: (_, __) => const CatalogPage(),
+      builder: (context, state) => const CatalogPage(),
+    ),
+    GoRoute(
+      path: '/product/:id',
+      builder: (context, state) {
+        final id = int.parse(state.pathParameters['id']!);
+        return ProductPage(productId: id);
+      },
     ),
     GoRoute(
       path: '/cart',
-      builder: (_, __) => const CartPage(),
+      builder: (context, state) => const CartPage(),
     ),
     GoRoute(
       path: '/orders',
-      builder: (_, __) => const OrdersPage(),
+      builder: (context, state) => const OrdersPage(),
     ),
     GoRoute(
       path: '/login',
@@ -36,7 +44,7 @@ final GoRouter appRouter = GoRouter(
     ),
     GoRoute(
       path: '/checkout',
-      builder: (_, __) => const CheckoutPage(),
+      builder: (context, state) => const CheckoutPage(),
     ),
   ],
 );

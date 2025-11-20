@@ -29,11 +29,6 @@ class _RegisterPageState extends State<RegisterPage> {
     super.dispose();
   }
 
-  void _go(BuildContext context, String route) {
-    Navigator.pop(context);
-    context.go(route);
-  }
-
   // register function
   Future<void> _register() async {
     if (_emailController.text.trim().isEmpty ||
@@ -77,7 +72,7 @@ class _RegisterPageState extends State<RegisterPage> {
             backgroundColor: Colors.green,
           ),
         );
-        _go(context, '/');
+        context.go('/');
       }
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -207,7 +202,7 @@ class _RegisterPageState extends State<RegisterPage> {
             TextButton(
               onPressed: _isLoading
                   ? null
-                  : () => _go(context, '/login'),
+                  : () => context.go('/login'),
               child: const Text('Déjà un compte ? Se connecter'),
             ),
           ],
