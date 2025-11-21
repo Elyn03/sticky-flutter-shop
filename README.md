@@ -40,3 +40,13 @@ flutterfire configure
 ```bash
 flutter run
 ```
+
+## Functionality
+- Browse a **catalog**
+  - search & filters
+- View **product details**
+- **Add to cart**
+- **Checkout** orders
+- View **order history**
+- **Create account**
+
