@@ -4,7 +4,6 @@ import 'package:sticky_flutter_shop/viewModels/products_view_model.dart';
 import 'package:sticky_flutter_shop/widgets/app_bar.dart';
 import '../widgets/button.dart';
 import '../widgets/drawer.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
@@ -17,7 +16,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final user = FirebaseAuth.instance.currentUser;
 
     return Scaffold(
       appBar: CustomAppBar(title: 'Sticky Shop'),

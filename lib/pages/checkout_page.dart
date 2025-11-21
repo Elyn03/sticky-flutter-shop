@@ -65,7 +65,6 @@ class _CheckoutPageState extends State<CheckoutPage> {
       return;
     }
 
-
     final order = Order(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       date: DateTime.now(),
@@ -247,7 +246,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
                             elevation: 1,
                             margin: const EdgeInsets.only(bottom: 12),
                             shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
+                              borderRadius: BorderRadius.circular(12),
                             ),
                             child: Padding(
                               padding: const EdgeInsets.all(12),
