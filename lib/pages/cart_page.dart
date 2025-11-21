@@ -5,12 +5,14 @@ import 'package:sticky_flutter_shop/services/api_cart.dart';
 import '../widgets/app_bar.dart';
 import '../widgets/button.dart';
 import '../widgets/drawer.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     final cart = Provider.of<CartProvider>(context);
 
     return Scaffold(
@@ -20,7 +22,7 @@ class CartPage extends StatelessWidget {
           ? const Center(
         child: Text(
           'Your cart is empty',
-          style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          style: TextStyle(fontSize: 20),
         ),
       )
           : Padding(
@@ -151,7 +153,13 @@ class CartPage extends StatelessWidget {
                 Expanded(
                   child: Button(
                     text: "Checkout",
-                    onPressed: () { context.push("/checkout"); },
+                    onPressed: () {
+                      if (user == null) {
+                        context.go("/login");
+                      } else {
+                        context.push("/checkout");
+                      }
+                    },
                   ),
                 ),
               ],

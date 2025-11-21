@@ -43,7 +43,6 @@ class NavBar extends StatelessWidget {
 
           if (user != null) ...[
             _navItem("Orders", () => _go(context, '/orders')),
-            _navItem("Checkout", () => _go(context, '/checkout')),
           ],
 
           const Spacer(),
@@ -55,7 +54,7 @@ class NavBar extends StatelessWidget {
           ] else ...[
             _navItem("Logout", () async {
               await FirebaseAuth.instance.signOut();
-              _go(context, '/');
+              context.go('/');
             }),
           ],
 
