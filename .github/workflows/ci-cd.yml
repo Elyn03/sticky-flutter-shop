@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-deploy:
-    name: Build Flutter
+    name: Build and Deploy Flutter Web
     runs-on: ubuntu-latest
 
     steps:
@@ -16,9 +16,12 @@ jobs:
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
-          flutter-version: "3.24.0"
+          flutter-version: "3.38.3"
 
-      - name: Install dependencies
+      - name: Enable Web
+        run: flutter config --enable-web
+
+      - name: Get dependencies
         run: flutter pub get
 
       - name: Build Flutter Web
@@ -32,4 +35,3 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: build/web
           prod: true
-
