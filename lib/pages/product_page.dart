@@ -10,14 +10,14 @@ import 'package:flutter/foundation.dart' show kIsWeb;
 
 class ProductPage extends StatelessWidget {
   final int productId;
- 
+
   const ProductPage({super.key, required this.productId});
 
   Future<void> _addToCart(BuildContext context, Product product) async {
     Provider.of<CartProvider>(context, listen: false).addItem(product.id, product.title, product.price);
 
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text("Ajouté au panier !")),
+      SnackBar(content: Text("${product.title} added!")),
     );
   }
 
@@ -38,7 +38,7 @@ class ProductPage extends StatelessWidget {
           return CupertinoPageScaffold(
             navigationBar: CupertinoNavigationBar(
               middle: Text(product.title),
-              previousPageTitle: "Retour",
+              previousPageTitle: "Return",
             ),
             child: Material(
               child: SafeArea(
@@ -118,7 +118,7 @@ class ProductPage extends StatelessWidget {
                   backgroundColor: Colors.blue[600],
                   foregroundColor: Colors.white,
                 ),
-                child: const Text('Ajouter au panier', style: TextStyle(fontSize: 16)),
+                child: const Text('Add to cart', style: TextStyle(fontSize: 16)),
               ),
             ),
           ],

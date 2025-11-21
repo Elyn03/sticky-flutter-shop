@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sticky_flutter_shop/widgets/app_bar.dart';
-
-import '../widgets/drawer.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -13,12 +10,10 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  // field values
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
-  // states
   bool _isLoading = false;
   String _errorMessage = '';
 
@@ -30,27 +25,26 @@ class _RegisterPageState extends State<RegisterPage> {
     super.dispose();
   }
 
-  // register function
   Future<void> _register() async {
     if (_emailController.text.trim().isEmpty ||
         _passwordController.text.isEmpty ||
         _confirmPasswordController.text.isEmpty) {
       setState(() {
-        _errorMessage = 'Veuillez remplir tous les champs';
+        _errorMessage = "Please fill in all fields";
       });
       return;
     }
 
     if (_passwordController.text != _confirmPasswordController.text) {
       setState(() {
-        _errorMessage = 'Les mots de passe ne correspondent pas.';
+        _errorMessage = "Passwords do not match";
       });
       return;
     }
 
     if (_passwordController.text.length < 6) {
       setState(() {
-        _errorMessage = 'Le mot de passe doit contenir au moins 6 caractères.';
+        _errorMessage = "Password must be at least 6 characters long";
       });
       return;
     }
@@ -69,7 +63,7 @@ class _RegisterPageState extends State<RegisterPage> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Inscription réussie ! Vous êtes maintenant connecté.'),
+            content: Text("Registration successful! You are now logged in"),
             backgroundColor: Colors.green,
           ),
         );
@@ -81,7 +75,7 @@ class _RegisterPageState extends State<RegisterPage> {
       });
     } catch (e) {
       setState(() {
-        _errorMessage = 'Une erreur inattendue s\'est produite';
+        _errorMessage = "An unexpected error occurred";
       });
     }
 
@@ -92,118 +86,115 @@ class _RegisterPageState extends State<RegisterPage> {
 
   String _getErrorMessage(String errorCode) {
     switch (errorCode) {
-      case 'email-already-in-use':
-        return 'Cette adresse email est déjà utilisée.';
-      case 'weak-password':
-        return 'Le mot de passe est trop faible.';
-      case 'invalid-email':
-        return 'Adresse email invalide.';
-      case 'operation-not-allowed':
-        return 'L\'inscription par email est désactivée.';
+      case "email-already-in-use":
+        return "This email address is already in use";
+      case "weak-password":
+        return "The password is too weak";
+      case "invalid-email":
+        return "Invalid email address";
+      case "operation-not-allowed":
+        return "Email/password registration is disabled";
       default:
-        return 'Une erreur est survenue. Veuillez réessayer.';
+        return "An error occurred. Please try again";
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: "Register Page"),
-      drawer: const NavBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              width: 100,
-              height: 100,
-              child: Image(
-                  image: NetworkImage("https://plus.unsplash.com/premium_photo-1683473596372-914f4368e1d0?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"),
-                  fit: BoxFit.cover
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 400),
+          child: Card(
+            elevation: 6,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text("Sticky Shop"),
+                  SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: Image(
+                      image: const NetworkImage(
+                          "https://plus.unsplash.com/premium_vector-1724060616786-5d9bfd1e0094?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MjYzfHx8ZW58MHx8fHx8"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text("Sign up"),
+                  const SizedBox(height: 20),
+
+                  TextField(
+                    controller: _emailController,
+                    decoration: const InputDecoration(
+                      labelText: "Email",
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                    enabled: !_isLoading,
+                  ),
+                  const SizedBox(height: 16),
+
+                  TextField(
+                    controller: _passwordController,
+                    decoration: const InputDecoration(
+                      labelText: "Password",
+                    ),
+                    obscureText: true,
+                    enabled: !_isLoading,
+                  ),
+                  const SizedBox(height: 16),
+
+                  TextField(
+                    controller: _confirmPasswordController,
+                    decoration: const InputDecoration(
+                      labelText: "Confirm password",
+                    ),
+                    obscureText: true,
+                    enabled: !_isLoading,
+                    onSubmitted: (_) => _register(),
+                  ),
+                  const SizedBox(height: 24),
+
+                  if (_errorMessage.isNotEmpty)
+                    Text(
+                      _errorMessage,
+                      style: TextStyle(color: Colors.red[700]),
+                      textAlign: TextAlign.center,
+                    ),
+
+                  if (_errorMessage.isNotEmpty)
+                    const SizedBox(height: 16),
+
+                  SizedBox(
+                    width: double.infinity,
+                    height: 48,
+                    child: ElevatedButton(
+                      onPressed: _isLoading ? null : _register,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green[600],
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: _isLoading
+                          ? const CircularProgressIndicator(color: Colors.white)
+                          : const Text("Sign up", style: TextStyle(fontSize: 16)),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+
+                  TextButton(
+                    onPressed: _isLoading ? null : () => context.go('/login'),
+                    child: const Text("Already have an account ? Log in"),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(height: 30),
-
-            TextField(
-              controller: _emailController,
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.email),
-              ),
-              keyboardType: TextInputType.emailAddress,
-              enabled: !_isLoading,
-            ),
-            const SizedBox(height: 16),
-
-            TextField(
-              controller: _passwordController,
-              decoration: const InputDecoration(
-                labelText: 'Mot de passe',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.lock),
-                helperText: 'Au moins 6 caractères',
-              ),
-              obscureText: true,
-              enabled: !_isLoading,
-            ),
-            const SizedBox(height: 16),
-
-            TextField(
-              controller: _confirmPasswordController,
-              decoration: const InputDecoration(
-                labelText: 'Confirmer le mot de passe',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.lock_outline),
-              ),
-              obscureText: true,
-              enabled: !_isLoading,
-              onSubmitted: (_) => _register(),
-            ),
-            const SizedBox(height: 24),
-
-            if (_errorMessage.isNotEmpty)
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.red[100],
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.red[300]!),
-                ),
-                child: Text(
-                  _errorMessage,
-                  style: TextStyle(color: Colors.red[700]),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-
-            if (_errorMessage.isNotEmpty) const SizedBox(height: 16),
-
-            SizedBox(
-              width: double.infinity,
-              height: 48,
-              child: ElevatedButton(
-                onPressed: _isLoading ? null : _register,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.green[600],
-                  foregroundColor: Colors.white,
-                ),
-                child: _isLoading
-                    ? const CircularProgressIndicator(color: Colors.white)
-                    : const Text('S\'inscrire', style: TextStyle(fontSize: 16)),
-              ),
-            ),
-            const SizedBox(height: 16),
-
-            TextButton(
-              onPressed: _isLoading
-                  ? null
-                  : () => context.go('/login'),
-              child: const Text('Déjà un compte ? Se connecter'),
-            ),
-          ],
+          ),
         ),
       ),
     );

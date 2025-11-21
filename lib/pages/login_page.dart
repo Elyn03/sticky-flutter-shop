@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sticky_flutter_shop/widgets/app_bar.dart';
-
-import '../widgets/drawer.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -19,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
 
   // states
   bool _isLoading = false;
-  String _errorMessage = '';
+  String _errorMessage = "";
 
   @override
   void dispose() {
@@ -32,14 +29,14 @@ class _LoginPageState extends State<LoginPage> {
   Future<void> _logIn() async {
     if (_emailController.text.trim().isEmpty || _passwordController.text.isEmpty) {
       setState(() {
-        _errorMessage = 'Veuillez remplir tous les champs';
+        _errorMessage = "Please fill in all fields";
       });
       return;
     }
 
     setState(() {
       _isLoading = true;
-      _errorMessage = '';
+      _errorMessage = "";
     });
 
     try {
@@ -51,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Connexion réussie !'),
+            content: Text('Successful log in !'),
             backgroundColor: Colors.green,
           ),
         );
@@ -63,7 +60,7 @@ class _LoginPageState extends State<LoginPage> {
       });
     } catch (e) {
       setState(() {
-        _errorMessage = 'Une erreur inattendue s\'est produite';
+        _errorMessage = "An unexpected error occurred";
       });
     }
 
@@ -74,104 +71,114 @@ class _LoginPageState extends State<LoginPage> {
 
   String _getErrorMessage(String errorCode) {
     switch (errorCode) {
-      case 'user-not-found':
-        return 'Aucun utilisateur trouvé avec cette adresse email.';
-      case 'wrong-password':
-        return 'Mot de passe incorrect.';
-      case 'invalid-email':
-        return 'Adresse email invalide.';
-      case 'user-disabled':
-        return 'Ce compte a été désactivé.';
-      case 'too-many-requests':
-        return 'Trop de tentatives. Réessayez plus tard.';
+      case "user-not-found":
+        return "No user found with this email address";
+      case "wrong-password":
+        return "Incorrect password";
+      case "invalid-email":
+        return "Invalid email address";
+      case "user-disabled":
+        return "This account has been disabled";
+      case "too-many-requests":
+        return "Too many attempts. Please try again later";
       default:
-        return 'Une erreur est survenue. Veuillez réessayer.';
+        return "An error occurred, try again";
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Login Page'),
-      drawer: const NavBar(),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.account_circle,
-              size: 100,
-              color: Colors.blue[600],
-            ),
-            const SizedBox(height: 30),
+      body: Center(
+        child: ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: 400),
+          child: Card(
+            elevation: 6,
+            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+            child: Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Text("Sticky Shop"),
+                  SizedBox(
+                    width: 100,
+                    height: 100,
+                    child: Image(
+                      image: NetworkImage("https://plus.unsplash.com/premium_vector-1724060616786-5d9bfd1e0094?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwcm9maWxlLXBhZ2V8MjYzfHx8ZW58MHx8fHx8"),
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  const Text("Log in"),
+                  const SizedBox(height: 20),
 
-            TextField(
-              controller: _emailController,
-              decoration: const InputDecoration(
-                labelText: 'Email',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.email),
+                  TextField(
+                    controller: _emailController,
+                    decoration: InputDecoration(
+                      labelText: "Email",
+                    ),
+                    keyboardType: TextInputType.emailAddress,
+                    enabled: !_isLoading,
+                  ),
+                  const SizedBox(height: 16),
+                  TextField(
+                    controller: _passwordController,
+                    decoration: const InputDecoration(
+                      labelText: 'Password',
+                    ),
+                    obscureText: true,
+                    enabled: !_isLoading,
+                    onSubmitted: (_) => _logIn(),
+                  ),
+                  const SizedBox(height: 24),
+
+                  if (_errorMessage.isNotEmpty)
+                    Container(
+                      width: double.infinity,
+                      padding: const EdgeInsets.all(12),
+                      decoration: BoxDecoration(
+                        color: Colors.red[100],
+                        borderRadius: BorderRadius.circular(8),
+                        border: Border.all(color: Colors.red[300]!),
+                      ),
+                      child: Text(
+                        _errorMessage,
+                        style: TextStyle(color: Colors.red[700]),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  if (_errorMessage.isNotEmpty)
+                    const SizedBox(height: 16),
+
+                  SizedBox(
+                    width: double.infinity,
+                    height: 48,
+                    child: ElevatedButton(
+                      onPressed: _isLoading ? null : _logIn,
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.blue[600],
+                        foregroundColor: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                      ),
+                      child: _isLoading
+                          ? const CircularProgressIndicator(color: Colors.white)
+                          : const Text('Log in', style: TextStyle(fontSize: 16)),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+
+                  // REGISTER LINK
+                  TextButton(
+                    onPressed: _isLoading ? null : () => context.go('/register'),
+                    child: const Text('No account ? Sign up'),
+                  ),
+                ],
               ),
-              keyboardType: TextInputType.emailAddress,
-              enabled: !_isLoading,
             ),
-            const SizedBox(height: 16),
-
-            TextField(
-              controller: _passwordController,
-              decoration: const InputDecoration(
-                labelText: 'Mot de passe',
-                border: OutlineInputBorder(),
-                prefixIcon: Icon(Icons.lock),
-              ),
-              obscureText: true,
-              enabled: !_isLoading,
-              onSubmitted: (_) => _logIn(),
-            ),
-            const SizedBox(height: 24),
-
-            if (_errorMessage.isNotEmpty)
-              Container(
-                width: double.infinity,
-                padding: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.red[100],
-                  borderRadius: BorderRadius.circular(8),
-                  border: Border.all(color: Colors.red[300]!),
-                ),
-                child: Text(
-                  _errorMessage,
-                  style: TextStyle(color: Colors.red[700]),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-
-            if (_errorMessage.isNotEmpty) const SizedBox(height: 16),
-
-            SizedBox(
-              width: double.infinity,
-              height: 48,
-              child: ElevatedButton(
-                onPressed: _isLoading ? null : _logIn,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue[600],
-                  foregroundColor: Colors.white,
-                ),
-                child: _isLoading
-                    ? const CircularProgressIndicator(color: Colors.white)
-                    : const Text('Se connecter', style: TextStyle(fontSize: 16)),
-              ),
-            ),
-            const SizedBox(height: 16),
-
-            TextButton(
-              onPressed: _isLoading
-                  ? null
-                  : () => context.go('/register'),
-              child: const Text('Pas de compte ? S\'inscrire'),
-            ),
-          ],
+          ),
         ),
       ),
     );

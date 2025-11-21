@@ -28,10 +28,9 @@ class _CatalogPageState extends State<CatalogPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(title: 'Catalog Page'),
+      appBar: CustomAppBar(title: 'Catalog'),
       drawer: const NavBar(),
       body: Consumer<ProductsViewModel>(
-        // Consumer is sort of "Await"
         builder: (context, viewModel, child) {
           if (viewModel.isLoading) {
             return const Center(
@@ -64,14 +63,14 @@ class _CatalogPageState extends State<CatalogPage> {
                 padding: const EdgeInsets.all(16.0),
                 child: Row(
                   children: [
-                    Text('${filteredProducts.length} produits'),
-                    const SizedBox(width: 12),
+                    Text('${filteredProducts.length} products'),
+                    const SizedBox(width: 500),
                     Expanded(
+                      flex: 2,
                       child: TextField(
                         controller: _queryController,
                         decoration: const InputDecoration(
-                          labelText: 'Recherche',
-                          border: OutlineInputBorder(),
+                          labelText: 'Search',
                           prefixIcon: Icon(Icons.search),
                         ),
                         onChanged: (value) {
@@ -80,22 +79,28 @@ class _CatalogPageState extends State<CatalogPage> {
                       ),
                     ),
                     const SizedBox(width: 12),
-                    DropdownButton<String>(
-                      value: dropdownValue,
-                      icon: const Icon(Icons.arrow_drop_down_rounded),
-                      onChanged: (String? value) {
-                        if (value != null) {
-                          setState(() {
-                            dropdownValue = value;
-                          });
-                        }
-                      },
-                      items: categories.map((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
+                    Expanded(
+                      flex: 1,
+                      child: DropdownButtonFormField<String>(
+                        value: dropdownValue,
+                        decoration: const InputDecoration(
+                          contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                        ),
+                        icon: const Icon(Icons.arrow_drop_down_rounded),
+                        onChanged: (String? value) {
+                          if (value != null) {
+                            setState(() {
+                              dropdownValue = value;
+                            });
+                          }
+                        },
+                        items: categories.map((String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
+                      ),
                     ),
                   ],
                 ),
@@ -134,7 +139,7 @@ class _CatalogPageState extends State<CatalogPage> {
           const SizedBox(height: 16),
           ElevatedButton(
             onPressed: () => viewModel.loadProducts(),
-            child: const Text('Réessayer'),
+            child: const Text('Retry'),
           ),
         ],
       ),
@@ -171,9 +176,7 @@ class _CatalogPageState extends State<CatalogPage> {
               // title
               Text(
                 product.title,
-                style: const TextStyle(
-                  fontSize: 16
-                ),
+                style: const TextStyle(fontSize: 16),
               ),
 
               const SizedBox(height: 4),
@@ -181,12 +184,12 @@ class _CatalogPageState extends State<CatalogPage> {
               // price
               Text(
                 product.formattedPrice,
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: Colors.blue.shade700,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.blue.shade700,
                   fontWeight: FontWeight.bold,
-                  ),
                 ),
+              ),
             ],
           ),
         ),

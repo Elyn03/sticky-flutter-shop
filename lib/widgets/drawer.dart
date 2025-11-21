@@ -40,8 +40,11 @@ class NavBar extends StatelessWidget {
           _navItem("Home", () => _go(context, '/')),
           _navItem("Catalog", () => _go(context, '/catalog')),
           _navItem("Cart", () => _go(context, '/cart')),
-          _navItem("Orders", () => _go(context, '/orders')),
-          _navItem("Checkout", () => _go(context, '/checkout')),
+
+          if (user != null) ...[
+            _navItem("Orders", () => _go(context, '/orders')),
+            _navItem("Checkout", () => _go(context, '/checkout')),
+          ],
 
           const Spacer(),
           const Divider(height: 24, thickness: 1),
