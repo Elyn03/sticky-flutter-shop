@@ -4,13 +4,39 @@ Sticky Shop is an online store built with Flutter where users can browse, custom
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+### Step 1: Clone Repository
+```bash
+git clone https://github.com/Elyn03/task-manager.git
+cd task-manager
+```
+### Step 2: Install Dependencies
+```bash
+flutter pub get
+flutter run
+```
+This will install all required packages
+### Step 3: Setup Firebase
+1. Create new Firebase project : [Firebase Console](https://console.firebase.google.com/)
+3. Click "Add project"
+4. Follow the setup
+5. Enable Firebase Authentication:
+   - Navigate to Authentication > Sign-in method
+   - Enable Email/Password provider
+6. Install Firebase CLI
+```bash
+npm install -g firebase-tools
+firebase login
+```
+7. Activate Firebase CLI
+```bash
+dart pub global activate flutterfire_cli
+```
+8. Configure Firebase CLI
+```bash
+flutterfire configure
+```
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Step 4: Run project
+```bash
+flutter run
+```
