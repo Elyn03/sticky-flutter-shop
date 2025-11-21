@@ -7,6 +7,7 @@ import 'package:sticky_flutter_shop/models/product.dart';
 import 'package:sticky_flutter_shop/widgets/app_bar.dart';
 import 'dart:io' show Platform;
 import 'package:flutter/foundation.dart' show kIsWeb;
+import '../widgets/button.dart';
 
 class ProductPage extends StatelessWidget {
   final int productId;
@@ -66,7 +67,6 @@ class ProductPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // square image
             AspectRatio(
               aspectRatio: 1,
               child: ClipRRect(
@@ -77,20 +77,14 @@ class ProductPage extends StatelessWidget {
                 ),
               ),
             ),
-
             const SizedBox(height: 10),
-
-            // title
             Text(product.title,
                 style: const TextStyle(
                   fontSize: 22,
                   fontWeight: FontWeight.bold,
                 )
             ),
-
             const SizedBox(height: 10),
-
-            // price
             Text(
               product.formattedPrice,
               style: const TextStyle(
@@ -98,28 +92,12 @@ class ProductPage extends StatelessWidget {
                 color: Colors.blue,
               ),
             ),
-
             const SizedBox(height: 20),
-
-            // description
             Text(product.description),
-
             const SizedBox(height: 28),
-
-            // add button
-            SizedBox(
-              width: double.infinity,
-              height: 32,
-              child: ElevatedButton(
-                onPressed: () {
-                  _addToCart(context, product);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: Colors.blue[600],
-                  foregroundColor: Colors.white,
-                ),
-                child: const Text('Add to cart', style: TextStyle(fontSize: 16)),
-              ),
+            Button(
+                text: "Add to cart",
+                onPressed: () { _addToCart(context, product); },
             ),
           ],
         ),

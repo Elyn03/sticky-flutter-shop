@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:go_router/go_router.dart';
+import '../widgets/button.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -168,25 +169,12 @@ class _RegisterPageState extends State<RegisterPage> {
                   if (_errorMessage.isNotEmpty)
                     const SizedBox(height: 16),
 
-                  SizedBox(
-                    width: double.infinity,
-                    height: 48,
-                    child: ElevatedButton(
-                      onPressed: _isLoading ? null : _register,
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green[600],
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                      child: _isLoading
-                          ? const CircularProgressIndicator(color: Colors.white)
-                          : const Text("Sign up", style: TextStyle(fontSize: 16)),
-                    ),
+                  Button(
+                    text: "Sign up",
+                    onPressed: _register,
+                    color: Colors.blueGrey,
                   ),
                   const SizedBox(height: 16),
-
                   TextButton(
                     onPressed: _isLoading ? null : () => context.go('/login'),
                     child: const Text("Already have an account ? Log in"),

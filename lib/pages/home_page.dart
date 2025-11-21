@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sticky_flutter_shop/viewModels/products_view_model.dart';
 import 'package:sticky_flutter_shop/widgets/app_bar.dart';
+import '../widgets/button.dart';
 import '../widgets/drawer.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -34,7 +36,7 @@ class _HomePageState extends State<HomePage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Banner
+                // banner
                 SizedBox(
                   width: double.infinity,
                   height: 300,
@@ -45,73 +47,85 @@ class _HomePageState extends State<HomePage> {
                 ),
                 const SizedBox(height: 32),
 
-                // Best Seller Title
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 28.0),
-                  child: const Text(
-                    'Best Seller Stickers',
-                    style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                const SizedBox(height: 16),
-
-                // Products Horizontal Scroll
-                SizedBox(
-                  height: 300,
-                  child: Center(
-                    child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      itemCount: products.length,
-                      separatorBuilder: (_, __) => const SizedBox(width: 16),
-                      itemBuilder: (context, index) {
-                        final product = products[index];
-                        return SizedBox(
-                          width: 180,
-                          child: Card(
-                            elevation: 6,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(16),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                ClipRRect(
-                                  borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-                                  child: Image.network(
-                                    product.thumbnail!,
-                                    height: 220,
-                                    width: 180,
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(12.0),
-                                  child: Text(
-                                    product.title ?? 'Sticker',
-                                    textAlign: TextAlign.center,
-                                    style: const TextStyle(
-                                        fontSize: 16, fontWeight: FontWeight.bold),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        );
-                      },
+                // best sellers
+                Column(
+                  children: [
+                    const Text(
+                      "Best Sellers",
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                ),
+                    const SizedBox(height: 24),
+                    SizedBox(
+                      height: 300,
+                      child: Center(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: List.generate(3, (index) {
+                            final product = products[index];
 
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(horizontal: 12),
+                              child: SizedBox(
+                                width: 180,
+                                child: Card(
+                                  elevation: 6,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: const BorderRadius.vertical(
+                                            top: Radius.circular(16)),
+                                        child: Image.network(
+                                          product.thumbnail!,
+                                          height: 200,
+                                          width: 180,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: Text(
+                                          product.title,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                          maxLines: 2,
+                                          overflow: TextOverflow.ellipsis,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            );
+                          }),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 24),
+                    Button(
+                      text: "Shop Now",
+                      onPressed: () { context.go("/catalog"); },
+                      width: 200
+                    ),
+                  ],
+                ),
                 const SizedBox(height: 32),
 
-                // About Sticky Shop in a Card
+                // about
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Card(
                     elevation: 4,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16)),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                     child: Padding(
                       padding: const EdgeInsets.all(24.0),
                       child: Column(
@@ -144,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
 
-                const SizedBox(height: 48), // extra space at the bottom
+                const SizedBox(height: 48),
               ],
             ),
           );

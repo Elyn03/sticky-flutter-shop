@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:sticky_flutter_shop/services/api_cart.dart';
 import '../widgets/app_bar.dart';
+import '../widgets/button.dart';
 import '../widgets/drawer.dart';
 
 class CartPage extends StatelessWidget {
@@ -140,38 +141,17 @@ class CartPage extends StatelessWidget {
             Row(
               children: [
                 Expanded(
-                  child: ElevatedButton(
+                  child: Button(
+                    text: "Clear Cart",
                     onPressed: cart.clear,
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red[600],
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
-                    child: const Text(
-                      'Clear Cart',
-                      style: TextStyle(fontSize: 16),
-                    ),
+                    color: Colors.red,
                   ),
                 ),
                 const SizedBox(width: 16),
                 Expanded(
-                  child: ElevatedButton(
-                    onPressed: () {
-                      context.push("/checkout");
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green[600],
-                      foregroundColor: Colors.white,
-                      padding: const EdgeInsets.symmetric(vertical: 16),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
-                    ),
-                    child: const Text(
-                      'Checkout',
-                      style: TextStyle(fontSize: 16),
-                    ),
+                  child: Button(
+                    text: "Checkout",
+                    onPressed: () { context.push("/checkout"); },
                   ),
                 ),
               ],
